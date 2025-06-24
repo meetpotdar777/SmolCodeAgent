@@ -1,5 +1,6 @@
 Smolagents 🤖
 
+
 This repository contains a Python script (full_smolagents_quickstart.py) demonstrating the core functionalities of smolagents, an open-source Python library designed for building and running AI agents with minimal code.
 
 🚀 What is Smolagents?
