@@ -30,7 +30,7 @@ Before running the script, ensure you have Python 3.8+ installed. ✅
 Clone this repository (or copy the full_smolagents_quickstart.py file):
 
 # If you have a Git repository setup
-G
+
 git clone <your-repo-url>
 
 cd <your-repo-name>
@@ -112,9 +112,13 @@ Below is the full_smolagents_quickstart.py script. 📄
 # full_smolagents_quickstart.py
 
 # --- Installation Note ---
+
 # Before running this code, ensure you have installed smolagents with the necessary extras:
+
 # pip install smolagents[toolkit,litellm,transformers]
+
 # This command includes default tools (like web search), LiteLLM for OpenAI/Anthropic,
+
 # and Transformers for local models.
 
 # --- Import necessary modules ---
