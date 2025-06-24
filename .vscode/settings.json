@@ -3,6 +3,8 @@
     "go.toolsManagement.autoUpdate": true,
     "maven.pomfile.autoUpdateEffectivePOM": true,
     "cSpell.words": [
-        "litellm"
+        "litellm",
+        "mistralai",
+        "Mixtral"
     ]
 }
