@@ -1,10 +1,13 @@
 Smolagents 🤖
+
 This repository contains a Python script (full_smolagents_quickstart.py) demonstrating the core functionalities of smolagents, an open-source Python library designed for building and running AI agents with minimal code.
 
 🚀 What is Smolagents?
+
 smolagents simplifies the process of creating AI agents, offering first-class support for CodeAgent (agents that write and execute code), common tool-calling, and seamless integration with various Large Language Models (LLMs) and tools. It's built for simplicity, flexibility, and extensibility.
 
 ✨ Key Features Demonstrated
+
 Basic Agent Creation: Running an agent for simple computational tasks. ➕
 
 Tool Integration: Using DuckDuckGoSearchTool to enable web search capabilities. 🌐
@@ -18,18 +21,23 @@ OpenAI models via LiteLLM (requires API key). 🔑
 Local models via Transformers (requires significant resources and potentially Hugging Face login/access). 💻
 
 📋 Prerequisites
+
 Before running the script, ensure you have Python 3.8+ installed. ✅
 
 🛠️ Installation
+
 Clone this repository (or copy the full_smolagents_quickstart.py file):
 
 # If you have a Git repository setup
+
 git clone <your-repo-url>
+
 cd <your-repo-name>
 
 (Or simply create full_smolagents_quickstart.py and paste the code into it.)
 
 Install smolagents with all necessary extras:
+
 Open your terminal or command prompt and run:
 
 pip install smolagents[toolkit,litellm,transformers]
@@ -45,9 +53,11 @@ litellm for integrations with various LLM APIs (e.g., OpenAI). 🔗
 transformers for loading and running models locally. ⚡
 
 🔑 API Key and Hugging Face Login Setup
+
 Many of the examples rely on external AI models and APIs. You'll need to configure your environment for them. 🔒
 
 1. Hugging Face Login (for InferenceClientModel and TransformersModel)
+
 Some models on Hugging Face (including the default ones used by InferenceClientModel and most Llama models) are gated or require authentication.
 
 Get a Hugging Face Token:
@@ -59,6 +69,7 @@ Click "New token", give it a name (e.g., smolagents-token), and select the "read
 Copy the token immediately. 📋
 
 Log in via CLI:
+
 Open your terminal and run:
 
 huggingface-cli login
@@ -66,6 +77,7 @@ huggingface-cli login
 Paste your copied Hugging Face token when prompted. 🔐
 
 2. OpenAI API Key (for LiteLLMModel with OpenAI)
+
 If you plan to run Example 3.2 (using OpenAI models like GPT-4 or GPT-3.5-turbo), you need an OpenAI API key. 💡
 
 Get an OpenAI API Key:
@@ -94,86 +106,136 @@ export OPENAI_API_KEY="sk-proj-YOUR_OPENAI_API_KEY_HERE"
 Important: Replace sk-proj-YOUR_OPENAI_API_KEY_HERE with your actual OpenAI API key. Ensure there are no extra spaces or characters. ❗
 
 💻 The Quickstart Code
+
 Below is the full_smolagents_quickstart.py script. 📄
 
 # full_smolagents_quickstart.py
 
 # --- Installation Note ---
+
 # Before running this code, ensure you have installed smolagents with the necessary extras:
+
 # pip install smolagents[toolkit,litellm,transformers]
+
 # This command includes default tools (like web search), LiteLLM for OpenAI/Anthropic,
+
 # and Transformers for local models.
 
 # --- Import necessary modules ---
+
 from smolagents import CodeAgent, InferenceClientModel
+
 from smolagents import DuckDuckGoSearchTool
+
 from smolagents import LiteLLMModel
+
 from smolagents import TransformersModel
 
 import os
 
 # --- Configuration (Optional but Recommended) ---
+
 # Set up API keys as environment variables if you plan to use OpenAI/Anthropic models
+
 # For OpenAI:
+
 # os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_API_KEY"
+
 # For Anthropic:
+
 # os.environ["ANTHROPIC_API_KEY"] = "YOUR_ANTHROPIC_API_KEY"
+
 # Replace "YOUR_OPENAI_API_KEY" and "YOUR_ANTHROPIC_API_KEY" with your actual keys.
+
 # It's best practice to load these from environment variables or a secure configuration.
 
 print("--- Starting Smolagents Quickstart Examples ---")
+
 print("Make sure you have installed smolagents with: pip install smolagents[toolkit,litellm,transformers]\n")
 
 # --- Example 1: Create Your First Agent (No Tools) ---
+
 print("--- Example 1: Agent without tools (CodeAgent) ---")
+
 try:
     # Initialize a model using Hugging Face Inference API (default model if not specified)
+
     # This will use a default model, often a smaller, general-purpose one.
+
     # We'll explicitly set a more reliable public model to avoid "Response ended prematurely" issues.
+
     print("Initializing InferenceClientModel with 'HuggingFaceH4/zephyr-7b-beta'...")
+
     model_no_tools = InferenceClientModel(model_id="HuggingFaceH4/zephyr-7b-beta")
 
     # Create an agent with no tools
+
     print("Creating CodeAgent with no tools...")
+
     agent_no_tools = CodeAgent(tools=[], model=model_no_tools)
 
     # Run the agent with a task that can be solved by internal reasoning (Python code)
+
     task_no_tools = "Calculate the sum of numbers from 1 to 10"
+
     print(f"Running agent with task: '{task_no_tools}'")
+
     result_no_tools = agent_no_tools.run(task_no_tools)
+
     print(f"Result from agent (no tools): {result_no_tools}")
+
     print("-" * 50)
 
 except Exception as e:
+
     print(f"Error in Example 1: {e}")
+
     print("This might be due to issues with the Hugging Face Inference API or network.\n")
 
 
-# --- Example 2: Adding Tools (DuckDuckGo Search) ---
+# --- Example 2: Adding Tools (DuckDuckGo Search) ---.
+
 print("\n--- Example 2: Agent with DuckDuckGoSearchTool ---")
+
 try:
     # Initialize a model, explicitly setting a more reliable public model.
+
     print("Initializing InferenceClientModel for tool-using agent with 'HuggingFaceH4/zephyr-7b-beta'...")
+
     model_with_tools = InferenceClientModel(model_id="HuggingFaceH4/zephyr-7b-beta")
 
     # Create an agent with the DuckDuckGoSearchTool
+
     print("Creating CodeAgent with DuckDuckGoSearchTool...")
+
     agent_with_tools = CodeAgent(
+
         tools=[DuckDuckGoSearchTool()],
+
         model=model_with_tools,
+
     )
 
     # Now the agent can search the web!
+
     task_with_tools = "What is the current weather in Paris?"
+
     print(f"Running agent with task: '{task_with_tools}'")
+
     result_with_tools = agent_with_tools.run(task_with_tools)
+
     print(f"Result from agent (with DuckDuckGoSearchTool): {result_with_tools}")
+
     print("Note: Weather information can change quickly. This result is based on the search at the time of execution.")
+
     print("-" * 50)
 
 except Exception as e:
+
     print(f"Error in Example 2: {e}")
+
     print("Ensure you have network access for DuckDuckGoSearchTool and that the model is accessible.\n")
+
 
 
 # --- Example 3: Demonstrating different model integrations ---
