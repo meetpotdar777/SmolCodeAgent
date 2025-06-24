@@ -1,5 +1,8 @@
 {
     "python.pythonPath": "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
     "go.toolsManagement.autoUpdate": true,
-    "maven.pomfile.autoUpdateEffectivePOM": true
+    "maven.pomfile.autoUpdateEffectivePOM": true,
+    "cSpell.words": [
+        "litellm"
+    ]
 }
