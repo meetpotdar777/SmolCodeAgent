@@ -1,14 +1,10 @@
 Smolagents 🤖
-
-
 This repository contains a Python script (full_smolagents_quickstart.py) demonstrating the core functionalities of smolagents, an open-source Python library designed for building and running AI agents with minimal code.
 
 🚀 What is Smolagents?
-
 smolagents simplifies the process of creating AI agents, offering first-class support for CodeAgent (agents that write and execute code), common tool-calling, and seamless integration with various Large Language Models (LLMs) and tools. It's built for simplicity, flexibility, and extensibility.
 
 ✨ Key Features Demonstrated
-
 Basic Agent Creation: Running an agent for simple computational tasks. ➕
 
 Tool Integration: Using DuckDuckGoSearchTool to enable web search capabilities. 🌐
@@ -22,23 +18,18 @@ OpenAI models via LiteLLM (requires API key). 🔑
 Local models via Transformers (requires significant resources and potentially Hugging Face login/access). 💻
 
 📋 Prerequisites
-
 Before running the script, ensure you have Python 3.8+ installed. ✅
 
 🛠️ Installation
-
 Clone this repository (or copy the full_smolagents_quickstart.py file):
 
 # If you have a Git repository setup
-
 git clone <your-repo-url>
-
 cd <your-repo-name>
 
 (Or simply create full_smolagents_quickstart.py and paste the code into it.)
 
 Install smolagents with all necessary extras:
-
 Open your terminal or command prompt and run:
 
 pip install smolagents[toolkit,litellm,transformers]
@@ -54,7 +45,6 @@ litellm for integrations with various LLM APIs (e.g., OpenAI). 🔗
 transformers for loading and running models locally. ⚡
 
 🔑 API Key and Hugging Face Login Setup
-
 Many of the examples rely on external AI models and APIs. You'll need to configure your environment for them. 🔒
 
 1. Hugging Face Login (for InferenceClientModel and TransformersModel)
@@ -76,7 +66,6 @@ huggingface-cli login
 Paste your copied Hugging Face token when prompted. 🔐
 
 2. OpenAI API Key (for LiteLLMModel with OpenAI)
-
 If you plan to run Example 3.2 (using OpenAI models like GPT-4 or GPT-3.5-turbo), you need an OpenAI API key. 💡
 
 Get an OpenAI API Key:
@@ -88,7 +77,6 @@ Click "Create new secret key". ✨
 Copy the key. 📋
 
 Set as Environment Variable:
-
 Open your terminal (the same one you'll use to run the Python script) and set the environment variable. 💻
 
 Windows (Command Prompt):
@@ -106,19 +94,14 @@ export OPENAI_API_KEY="sk-proj-YOUR_OPENAI_API_KEY_HERE"
 Important: Replace sk-proj-YOUR_OPENAI_API_KEY_HERE with your actual OpenAI API key. Ensure there are no extra spaces or characters. ❗
 
 💻 The Quickstart Code
-
 Below is the full_smolagents_quickstart.py script. 📄
 
 # full_smolagents_quickstart.py
 
 # --- Installation Note ---
-
 # Before running this code, ensure you have installed smolagents with the necessary extras:
-
 # pip install smolagents[toolkit,litellm,transformers]
-
 # This command includes default tools (like web search), LiteLLM for OpenAI/Anthropic,
-
 # and Transformers for local models.
 
 # --- Import necessary modules ---
