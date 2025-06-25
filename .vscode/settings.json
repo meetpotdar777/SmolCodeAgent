@@ -3,9 +3,13 @@
     "go.toolsManagement.autoUpdate": true,
     "maven.pomfile.autoUpdateEffectivePOM": true,
     "cSpell.words": [
+        "CUDA",
+        "huggingface",
         "litellm",
         "mistralai",
         "Mixtral",
-        "smolagents"
+        "smolagents",
+        "startswith",
+        "toolkits"
     ]
 }
